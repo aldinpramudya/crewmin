@@ -29,6 +29,10 @@ Route::middleware(['auth'])->group(function () {
     // ROUTE PEGAWAI
     Route::get('/admin/pegawai', [App\Http\Controllers\PegawaiController::class, 'index'])->name('admin-pegawai');
     Route::get('/admin/pegawai/create', [App\Http\Controllers\PegawaiController::class, 'create'])->name('admin-pegawai-create');
+    Route::post('/admin/pegawai/store', [App\Http\Controllers\PegawaiController::class, 'store'])->name('admin-pegawai-store');
+    Route::get('/admin/pegawai/edit/{id}', [App\Http\Controllers\PegawaiController::class, 'edit'])->name('admin-pegawai-edit');
+    Route::put('/admin/pegawai/update/{id}', [App\Http\Controllers\PegawaiController::class, 'update'])->name('admin-pegawai-update');
+    Route::delete('/admin/pegawai/delete/{id}', [App\Http\Controllers\PegawaiController::class, 'destroy'])->name('admin-pegawai-delete');
 
     // ROUTE ROLE
     Route::get('/admin/role', [App\Http\Controllers\RoleController::class, 'index'])->name('admin-role');

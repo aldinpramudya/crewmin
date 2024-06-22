@@ -87,8 +87,6 @@
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-    @yield('pegawai-js')
-    @yield('role-js')
 </body>
 
 </html>
