@@ -36,7 +36,10 @@ class HomeController extends Controller
         return view('crewmin.index', compact('totalPegawai', 'totalRole'));
     }
 
-    public function adminIndex(){
-        return view('admin.admin-dashboard');
+    public function adminIndex()
+    {
+        $totalPegawai = Pegawai::count();
+        $totalRole = Role::count();
+        return view('admin.admin-dashboard', compact('totalPegawai', 'totalRole'));
     }
 }
