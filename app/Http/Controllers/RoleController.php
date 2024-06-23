@@ -78,6 +78,6 @@ class RoleController extends Controller
         $role = Role::find($id);
         $role->delete();
 
-        return redirect()->route('admin-role')->with('success', 'Role deleted successfully');
+        return response()->json(['message' => 'Role deleted successfully'], 200);
     }
 }

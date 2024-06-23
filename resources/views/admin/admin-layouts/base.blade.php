@@ -7,8 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin</title>
 
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.jpg') }}">
+
+
     {{-- <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+
+    <!-- Add SweetAlert CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- DataTables -->
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
@@ -74,12 +81,17 @@
     {{-- JQUERY--}}
     {{-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> --}}
 
+    <!-- Add SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
     <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

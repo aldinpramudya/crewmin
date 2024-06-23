@@ -31,23 +31,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($roles as $role)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$role->name}}</td>
-                                <td>
-                                    <a href="{{route('admin-role-edit', $role->id)}}">
-                                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil"></i>
-                                            Edit</button>
-                                    </a>
-                                    <form action="{{route('admin-role-delete', $role->id)}}" method="POST" style="display: inline-block">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>
-                                            Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                            @foreach ($roles as $role)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $role->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin-role-edit', $role->id) }}">
+                                            <button type="button" class="btn btn-primary"><i class="bi bi-pencil"></i>
+                                                Edit</button>
+                                        </a>
+                                        <button class="btn btn-danger" onclick="deleteRoles({{ $role->id }})"><i class="bi bi-trash"></i>Hapus</button>
+                                        {{-- <form action="{{ route('admin-role-delete', $role->id) }}" method="POST"
+                                            style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>
+                                                Delete</button>
+                                        </form> --}}
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -56,3 +58,46 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
 @endsection
+
+@push('scripts')
+    <script>
+        function deleteRoles(roleId) {
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Anda Tidak Dapat Mengembalikan Data Yang Sudah Dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Send delete request to server
+                    fetch(`/admin/role/delete/${roleId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            Swal.fire(
+                                'Dihapus!',
+                                'Role Sudah Dihapus.',
+                                'success'
+                            ).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Role Tidak Dapat Dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+@endpush

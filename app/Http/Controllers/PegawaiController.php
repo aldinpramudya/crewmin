@@ -86,6 +86,6 @@ class PegawaiController extends Controller
     public function destroy($id)
     {
         Pegawai::find($id)->delete();
-        return redirect()->route('admin-pegawai')->with('success','Pegawai deleted successfully.');
+        return response()->json(['message' => 'Employee deleted successfully'], 200);
     }
 }
