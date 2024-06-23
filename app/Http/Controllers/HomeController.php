@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pegawai;
+use App\Models\Role;
 
 class HomeController extends Controller
 {
@@ -28,7 +30,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('crewmin.index');
+        $totalPegawai = Pegawai::count();
+        $totalRole = Role::count();
+
+        return view('crewmin.index', compact('totalPegawai', 'totalRole'));
     }
 
     public function adminIndex(){
