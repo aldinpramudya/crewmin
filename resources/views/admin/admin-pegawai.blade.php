@@ -28,6 +28,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
+                                <th>Kota</th>
                                 <th>No. Telepon</th>
                                 <th>Edit Button</th>
                             </tr>
@@ -39,6 +40,7 @@
                                     <td>{{ $pegawai->name }}</td>
                                     <td>{{ $pegawai->email }}</td>
                                     <td>{{ $pegawai->address }}</td>
+                                    <td>{{ $pegawai->kota}}</td>
                                     <td>{{ $pegawai->no_telp }}</td>
                                     <td>
                                         <a href="{{ route('admin-pegawai-edit', $pegawai->id) }}">

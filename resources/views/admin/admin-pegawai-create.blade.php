@@ -38,6 +38,10 @@
                             <input type="text" class="form-control" id="address" name="address">
                         </div>
                         <div class="mb-3">
+                            <label for="kota" class="form-label">Kota</label>
+                            <input type="text" class="form-control" id="kota" name="kota">
+                        </div>
+                        <div class="mb-3">
                             <label for="no_telp" class="form-label">No Telepon</label>
                             <input type="text" class="form-control" id="no_telp" name="no_telp">
                         </div>

@@ -36,6 +36,7 @@ class PegawaiController extends Controller
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'kota' => 'required', // Add 'kota' to the validation rule
             'no_telp' => 'required',
         ]);
 
@@ -71,6 +72,7 @@ class PegawaiController extends Controller
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'kota' => 'required', // Add 'kota' to the validation rule
             'no_telp' => 'required',
         ]);
 

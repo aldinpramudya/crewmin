@@ -17,6 +17,7 @@ class Pegawai extends Model
         'name',
         'email',
         'address',
+        'kota',
         'no_telp',
     ];
 
